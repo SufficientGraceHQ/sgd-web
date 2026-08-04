@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { buildWhatsAppLink } from '@/lib/sgd-listings'
 
 export default function Hero() {
   return (
@@ -30,17 +29,17 @@ export default function Hero() {
           {/* Text panel */}
           <div>
             <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-6">
-              Lagos, Nigeria — Since 2020
+              Lagos, Nigeria — 4+ Years
             </p>
 
             <h1
               className="font-display font-semibold text-warm leading-[1.1] mb-6"
               style={{ fontSize: 'clamp(48px, 7vw, 88px)' }}
             >
-              <span className="text-gold">Verified</span>{' '}
+              <span className="text-gold">Structured</span>{' '}
               Secondhand.{' '}
               <br className="hidden md:block" />
-              Delivered Right.
+              Clear Buying Routes.
             </h1>
 
             {/* Gold rule line */}
@@ -50,8 +49,8 @@ export default function Hero() {
             />
 
             <p className="font-ui text-body text-lg leading-relaxed mb-10 max-w-md">
-              Furniture. Appliances. Electronics. Inspected by us.
-              Paid before pickup. No stories.
+              Furniture. Appliances. Electronics. Fixed prices.
+              Defined payment and fulfilment steps.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -60,7 +59,7 @@ export default function Hero() {
                 className="inline-block bg-gold text-bg font-ui text-sm font-semibold tracking-[0.15em] uppercase px-8 py-4 hover:bg-gold-light transition-colors"
                 style={{ borderRadius: '2px' }}
               >
-                Shop Available Items
+                Browse Live Inventory
               </Link>
               <Link
                 href="/how-it-works"
@@ -90,11 +89,11 @@ export default function Hero() {
               }}
             />
             <div className="relative z-10 text-center p-12">
-              <p className="font-display text-5xl text-gold font-semibold mb-3">42,000+</p>
-              <p className="font-ui text-xs tracking-[0.2em] uppercase text-muted mb-8">Buyers Served</p>
+              <p className="font-display text-5xl text-gold font-semibold mb-3">8,000+</p>
+              <p className="font-ui text-xs tracking-[0.2em] uppercase text-muted mb-8">Successful Transactions</p>
               <div className="w-px h-12 bg-gold mx-auto opacity-30 mb-8" />
-              <p className="font-display text-5xl text-gold font-semibold mb-3">8,500+</p>
-              <p className="font-ui text-xs tracking-[0.2em] uppercase text-muted mb-8">Items Delivered</p>
+              <p className="font-display text-5xl text-gold font-semibold mb-3">4+ Years</p>
+              <p className="font-ui text-xs tracking-[0.2em] uppercase text-muted mb-8">Serving Lagos</p>
               <div className="w-px h-12 bg-gold mx-auto opacity-30 mb-8" />
               <p className="font-hand text-2xl text-warm">Structure First. Scale Second.</p>
             </div>

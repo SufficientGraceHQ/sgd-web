@@ -4,7 +4,7 @@ const CATEGORIES = [
   {
     name: 'Furniture',
     description: 'Sofas, beds, wardrobes, dining sets',
-    href: '/listings?category=Furniture',
+    href: '/listings',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M3 10V8a1 1 0 011-1h16a1 1 0 011 1v2M3 10v8a1 1 0 001 1h16a1 1 0 001-1v-8M7 14h10M5 10v4M19 10v4" />
@@ -16,7 +16,7 @@ const CATEGORIES = [
   {
     name: 'Appliances',
     description: 'Fridges, washing machines, ACs, TVs',
-    href: '/listings?category=Appliances',
+    href: '/listings',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
         <rect x="5" y="3" width="14" height="18" rx="1" />
@@ -28,7 +28,7 @@ const CATEGORIES = [
   {
     name: 'Electronics',
     description: 'Laptops, phones, sound systems, gadgets',
-    href: '/listings?category=Electronics',
+    href: '/listings',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
         <rect x="2" y="4" width="20" height="14" rx="1" />

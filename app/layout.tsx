@@ -2,8 +2,14 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'SGD CRM',
-  description: 'Sufficient Grace Declutter — CRM Automation System',
+  metadataBase: new URL('https://sufficientgrace.ng'),
+  title: 'Sufficient Grace Declutter',
+  description:
+    'A structured Lagos marketplace for clean secondhand furniture, appliances, and electronics.',
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

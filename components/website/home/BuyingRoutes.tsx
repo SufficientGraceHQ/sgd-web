@@ -1,12 +1,12 @@
 const ROUTES = [
   {
     title: 'Point & Kill',
-    badge: 'Most Popular',
+    badge: 'SGD-Led',
     badgeColor: '#C9924A' as const,
     badgeTextColor: '#0C0C0C' as const,
     description:
-      'Pay SGD. We go to the seller, inspect the item, verify condition, and deliver to you. You never have to leave your house.',
-    bestFor: 'Buyers who want zero risk and full service',
+      'Pay SGD. We go to the seller, add a condition-check step, and coordinate delivery to you.',
+    bestFor: 'Buyers who want inspection and coordinated delivery',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-8 h-8">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
@@ -15,7 +15,7 @@ const ROUTES = [
   },
   {
     title: 'Self Inspection',
-    badge: 'Budget-Conscious',
+    badge: 'Buyer-Led',
     badgeColor: '#252525' as const,
     badgeTextColor: '#888888' as const,
     description:
@@ -81,7 +81,7 @@ export default function BuyingRoutes() {
                 className="pt-5"
                 style={{ borderTop: '1px solid rgba(201,146,74,0.15)' }}
               >
-                <p className="font-ui text-xs tracking-[0.1em] uppercase text-muted mb-1">Best for</p>
+                <p className="font-ui text-xs tracking-[0.1em] uppercase text-muted mb-1">Route fit</p>
                 <p className="font-ui text-sm text-body">{route.bestFor}</p>
               </div>
             </div>

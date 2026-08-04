@@ -4,12 +4,12 @@ const STEPS = [
   {
     number: '01',
     title: 'You Spot the Item',
-    body: 'See something on our page or Instagram. Send us a screenshot on DM or WhatsApp.',
+    body: 'See a live item on our Instagram page. Send us the screenshot and SGD reference ID.',
   },
   {
     number: '02',
     title: 'You Pay Upfront',
-    body: 'We confirm availability. You pay SGD first. No negotiations. No exceptions.',
+    body: 'After availability is confirmed, you pay SGD first. Prices are fixed.',
   },
   {
     number: '03',
@@ -19,7 +19,7 @@ const STEPS = [
   {
     number: '04',
     title: 'Item Confirmed & Moved',
-    body: 'Clean or near-new condition only. What you see is what you get.',
+    body: 'Clean or near-new items only. Condition is checked through the selected buying route.',
   },
 ]
 

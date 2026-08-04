@@ -5,7 +5,7 @@ import { buildWhatsAppLink } from '@/lib/sgd-listings'
 export const metadata: Metadata = {
   title: 'How It Works',
   description:
-    'The SGD buying process — no surprises. Learn exactly how to buy verified secondhand items through Sufficient Grace Declutter.',
+    'A clear guide to buying clean secondhand items through the structured Sufficient Grace Declutter process.',
 }
 
 const STEPS = [
@@ -13,42 +13,42 @@ const STEPS = [
     step: 1,
     title: 'Find an Item',
     detail:
-      'Browse our listings on this site or our Instagram @sufficientgracedeclutter. Screenshot what you want.',
+      'Browse the live posts on Instagram @sufficientgracedeclutter. Screenshot the item and its SGD reference ID.',
   },
   {
     step: 2,
     title: 'Reach Out',
     detail:
-      "Send the screenshot to our WhatsApp or Instagram DM. We confirm if the item is still available and quote you the final price.",
+      "Send the screenshot to our WhatsApp or Instagram DM. We confirm if the item is still available and confirm the fixed caption price.",
   },
   {
     step: 3,
     title: 'Pay SGD First',
     detail:
-      "Payment is made to SGD — not the seller. This protects you. No payment, no seller details. No exceptions.",
+      "Payment is made to SGD — not the seller. Seller details are released only after SGD confirms the payment through its authorized process.",
   },
   {
     step: 4,
     title: 'Choose Your Route',
     detail:
-      'Point & Kill: we inspect, verify, and deliver. Self Inspection: we release seller contact, you arrange pickup.',
+      'Point & Kill: we inspect and coordinate delivery. Self Inspection: we release seller contact and you arrange your inspection and pickup.',
   },
   {
     step: 5,
     title: 'Item Moves',
     detail:
-      'Clean or near-new items only. No dusty, heavily used, or faulty listings on SGD. What you see is what you get.',
+      'SGD accepts clean or near-new items. Condition is checked according to the selected buying route before completion.',
   },
 ]
 
 const FAQS = [
   {
     q: 'Why do I pay before seeing the seller?',
-    a: 'Payment to SGD creates accountability. The seller only gets paid when the deal closes. This protects you from ghosting, bait-and-switch, or fake listings.',
+    a: 'Payment to SGD keeps payment and seller-detail release inside one accountable transaction path. Seller settlement follows the authorized SGD process.',
   },
   {
     q: "What if the item isn't as described?",
-    a: 'Our listings are clean or near-new only. If we confirm an item, it meets our standard. Point & Kill includes our inspection as a guarantee.',
+    a: 'Our listings are clean or near-new only. Point & Kill adds an inspection step so the item condition can be checked before delivery.',
   },
   {
     q: 'Can I negotiate the price?',
@@ -56,7 +56,7 @@ const FAQS = [
   },
   {
     q: 'How do I contact SGD?',
-    a: 'WhatsApp or Instagram DM @sufficientgracedeclutter. Our AI (Esther) handles first response 24/7.',
+    a: 'Message us on WhatsApp or Instagram DM @sufficientgracedeclutter with the item reference or a screenshot.',
   },
   {
     q: 'What areas do you serve?',
@@ -64,7 +64,7 @@ const FAQS = [
   },
   {
     q: "What happens if a deal falls through?",
-    a: "It doesn't happen often — but if an item becomes unavailable after payment, we issue a full refund and find you an alternative.",
+    a: "We pause fulfilment and escalate the case to the authorized SGD team. Any refund or alternative requires human review and confirmation.",
   },
 ]
 
@@ -80,7 +80,7 @@ export default function HowItWorksPage() {
           </h1>
           <div className="w-9 h-0.5 bg-gold mb-6" />
           <p className="font-ui text-body text-lg max-w-xl leading-relaxed">
-            No surprises. No stories. A structured process that protects you from start to delivery.
+            A structured process with clear payment, inspection, and fulfilment handoffs.
           </p>
         </div>
       </section>
@@ -136,13 +136,13 @@ export default function HowItWorksPage() {
             {[
               {
                 title: 'Point & Kill',
-                badge: 'Most Popular',
-                desc: 'Pay SGD. We visit the seller, inspect every detail, confirm condition, and deliver directly to you. Full service, zero risk.',
-                steps: ['You pay SGD', 'We inspect at source', 'We confirm & deliver', 'You receive — done'],
+                badge: 'SGD-Led',
+                desc: 'Pay SGD. We visit the seller, add a condition-check step, and coordinate delivery to you.',
+                steps: ['You pay SGD', 'We visit the source', 'Condition is checked', 'Delivery is coordinated'],
               },
               {
                 title: 'Self Inspection',
-                badge: 'Budget Route',
+                badge: 'Buyer-Led',
                 desc: "Pay SGD. We release the seller's contact details. You arrange your own visit, inspection, and pickup logistics.",
                 steps: ['You pay SGD', 'We share seller details', 'You visit & inspect', 'You arrange pickup'],
               },

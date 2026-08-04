@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import type { Metadata } from 'next'
+import { WHATSAPP_NUMBER } from '@/lib/sgd-listings'
 
 // Note: metadata export only works in server components. This page uses client state for the form.
 // SEO is handled via the parent layout metadata.
@@ -10,16 +10,16 @@ type FormState = 'idle' | 'loading' | 'success' | 'error'
 
 const BENEFITS = [
   {
-    title: 'We Vet Buyers',
-    body: 'Buyers pay us first. No tyre-kickers. No time-wasters. Your item moves to serious buyers only.',
+    title: 'Structured Buyer Flow',
+    body: 'Buyers pay SGD first, helping us prioritize payment-ready buyers and reduce casual enquiries.',
   },
   {
     title: 'We Handle Inquiries',
-    body: 'Our AI (Esther) handles all first-contact messages. You focus on your life.',
+    body: 'Our team handles first-contact inquiries so you can focus on your life.',
   },
   {
-    title: 'Fair Pricing',
-    body: 'We set a competitive market price. You get the agreed seller payout when the item moves.',
+    title: 'Agreed Pricing',
+    body: 'We agree the listing price and seller payout with you before publication.',
   },
 ]
 
@@ -66,16 +66,14 @@ export default function SellWithUsPage() {
       }
     }
     setState('loading')
-    const url = `https://wa.me/2348000000000?text=${buildWhatsAppMessage()}`
-    setTimeout(() => {
-      window.open(url, '_blank')
-      setState('success')
-    }, 400)
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${buildWhatsAppMessage()}`
+    setState('success')
+    window.location.assign(url)
   }
 
   const inputClass = "w-full bg-surface border font-ui text-sm text-body placeholder:text-ghost px-4 py-3.5 focus:outline-none focus:border-gold transition-colors"
   const inputStyle = { border: '1px solid rgba(201,146,74,0.2)', borderRadius: '2px' }
-  const focusStyle = { borderColor: '#C9924A' }
+
 
   return (
     <>
@@ -160,17 +158,18 @@ export default function SellWithUsPage() {
             >
               <p className="font-display text-3xl text-gold mb-3">Submitted.</p>
               <p className="font-ui text-sm text-body leading-relaxed">
-                Your WhatsApp has opened with your item details. We&apos;ll review and reach out within 24 hours.
+                Your WhatsApp has opened with your item details. Our team will review the submission and respond through WhatsApp.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                  <label htmlFor="seller_name" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                     Your Name <span className="text-gold">*</span>
                   </label>
                   <input
+                    id="seller_name"
                     type="text"
                     name="seller_name"
                     value={form.seller_name}
@@ -182,10 +181,11 @@ export default function SellWithUsPage() {
                   />
                 </div>
                 <div>
-                  <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                  <label htmlFor="whatsapp_number" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                     WhatsApp Number <span className="text-gold">*</span>
                   </label>
                   <input
+                    id="whatsapp_number"
                     type="tel"
                     name="whatsapp_number"
                     value={form.whatsapp_number}
@@ -199,10 +199,11 @@ export default function SellWithUsPage() {
               </div>
 
               <div>
-                <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                <label htmlFor="item_name" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                   Item Name <span className="text-gold">*</span>
                 </label>
                 <input
+                  id="item_name"
                   type="text"
                   name="item_name"
                   value={form.item_name}
@@ -216,10 +217,11 @@ export default function SellWithUsPage() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                  <label htmlFor="item_category" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                     Category <span className="text-gold">*</span>
                   </label>
                   <select
+                    id="item_category"
                     name="item_category"
                     value={form.item_category}
                     onChange={handleChange}
@@ -234,10 +236,11 @@ export default function SellWithUsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                  <label htmlFor="item_condition" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                     Condition <span className="text-gold">*</span>
                   </label>
                   <select
+                    id="item_condition"
                     name="item_condition"
                     value={form.item_condition}
                     onChange={handleChange}
@@ -254,7 +257,7 @@ export default function SellWithUsPage() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                  <label htmlFor="asking_price" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                     Asking Price (NGN) <span className="text-gold">*</span>
                   </label>
                   <div className="relative">
@@ -264,6 +267,7 @@ export default function SellWithUsPage() {
                       ₦
                     </span>
                     <input
+                      id="asking_price"
                       type="number"
                       name="asking_price"
                       value={form.asking_price}
@@ -276,10 +280,11 @@ export default function SellWithUsPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                  <label htmlFor="location" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                     Location (Lagos Area) <span className="text-gold">*</span>
                   </label>
                   <input
+                    id="location"
                     type="text"
                     name="location"
                     value={form.location}
@@ -293,10 +298,11 @@ export default function SellWithUsPage() {
               </div>
 
               <div>
-                <label className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
+                <label htmlFor="description" className="font-ui text-xs tracking-[0.1em] uppercase text-muted block mb-2">
                   Description (optional)
                 </label>
                 <textarea
+                  id="description"
                   name="description"
                   value={form.description}
                   onChange={handleChange}
@@ -332,7 +338,7 @@ export default function SellWithUsPage() {
               </button>
 
               <p className="font-ui text-xs text-muted text-center">
-                Submitting opens WhatsApp with your details pre-filled. We review within 24 hours.
+                Submitting opens WhatsApp with your details pre-filled for the SGD team to review.
               </p>
             </form>
           )}

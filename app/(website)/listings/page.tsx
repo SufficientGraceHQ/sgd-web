@@ -1,190 +1,139 @@
-'use client'
+import type { Metadata } from 'next'
+import { buildWhatsAppLink } from '@/lib/sgd-listings'
 
-import { useState, useMemo } from 'react'
-import ListingCard from '@/components/website/ListingCard'
-import { MOCK_LISTINGS, ListingCategory, ListingCondition, ListingRoute } from '@/lib/sgd-listings'
+export const metadata: Metadata = {
+  title: 'Live SGD Inventory',
+  description:
+    'Browse the current Sufficient Grace Declutter inventory on Instagram and inquire using the listing reference ID.',
+}
 
-const CATEGORIES: ListingCategory[] = ['Furniture', 'Appliances', 'Electronics']
-const CONDITIONS: ListingCondition[] = ['Clean', 'Near-New']
-const ROUTES: ListingRoute[] = ['Point & Kill', 'Self Inspection']
-const SORT_OPTIONS = ['Newest First', 'Price: Low to High', 'Price: High to Low']
+const STEPS = [
+  {
+    number: '01',
+    title: 'Browse the Live Post',
+    body: 'Current items are published on @sufficientgracedeclutter with their price, condition, location, and status.',
+  },
+  {
+    number: '02',
+    title: 'Copy the Reference ID',
+    body: 'Use the SGD reference shown in the caption so the team can identify the exact item without guesswork.',
+  },
+  {
+    number: '03',
+    title: 'Message SGD',
+    body: 'Send the reference or screenshot on WhatsApp or Instagram. The team confirms the current availability before payment.',
+  },
+]
 
 export default function ListingsPage() {
-  const [category, setCategory] = useState<ListingCategory | ''>('')
-  const [condition, setCondition] = useState<ListingCondition | ''>('')
-  const [route, setRoute] = useState<ListingRoute | ''>('')
-  const [sort, setSort] = useState('Newest First')
-
-  const filtered = useMemo(() => {
-    let list = MOCK_LISTINGS.filter((l) => l.status === 'available')
-    if (category) list = list.filter((l) => l.category === category)
-    if (condition) list = list.filter((l) => l.condition === condition)
-    if (route) list = list.filter((l) => l.available_routes === route || l.available_routes === 'Both')
-    if (sort === 'Price: Low to High') list = [...list].sort((a, b) => a.price - b.price)
-    if (sort === 'Price: High to Low') list = [...list].sort((a, b) => b.price - a.price)
-    return list
-  }, [category, condition, route, sort])
-
-  const hasFilters = category || condition || route
-
   return (
     <>
-      {/* Header */}
-      <section className="bg-bg pt-20 pb-12">
-        <div className="max-w-site mx-auto px-6">
-          <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-4">Inventory</p>
-          <h1 className="font-display text-5xl md:text-6xl text-warm font-semibold mb-4">
-            Available Items
-          </h1>
-          <div className="w-9 h-0.5 bg-gold mb-6" />
-          <p className="font-ui text-body leading-relaxed max-w-xl">
-            All items are verified clean or near-new condition. Fixed prices. No haggling.
-          </p>
-        </div>
-      </section>
-
-      <section
-        className="bg-surface py-12"
-        style={{ borderTop: '1.5px solid #C9924A' }}
-      >
-        <div className="max-w-site mx-auto px-6">
-          {/* Filter bar */}
-          <div className="flex flex-wrap gap-3 mb-10 items-center">
-            {/* Category */}
-            <div className="flex gap-2">
-              <button
-                onClick={() => setCategory('')}
-                className="font-ui text-xs tracking-[0.1em] uppercase px-4 py-2 transition-colors"
-                style={{
-                  background: !category ? '#C9924A' : 'transparent',
-                  color: !category ? '#0C0C0C' : '#888888',
-                  border: '1px solid rgba(201,146,74,0.4)',
-                  borderRadius: '2px',
-                }}
-              >
-                All
-              </button>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setCategory(cat === category ? '' : cat)}
-                  className="font-ui text-xs tracking-[0.1em] uppercase px-4 py-2 transition-colors"
-                  style={{
-                    background: category === cat ? '#C9924A' : 'transparent',
-                    color: category === cat ? '#0C0C0C' : '#888888',
-                    border: '1px solid rgba(201,146,74,0.4)',
-                    borderRadius: '2px',
-                  }}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            <div
-              className="w-px h-6 hidden md:block"
-              style={{ background: 'rgba(201,146,74,0.2)' }}
-            />
-
-            {/* Condition */}
-            {CONDITIONS.map((cond) => (
-              <button
-                key={cond}
-                onClick={() => setCondition(cond === condition ? '' : cond)}
-                className="font-ui text-xs tracking-[0.1em] uppercase px-4 py-2 transition-colors"
-                style={{
-                  background: condition === cond ? '#1A1A1A' : 'transparent',
-                  color: condition === cond ? '#C9924A' : '#555555',
-                  border: `1px solid ${condition === cond ? '#C9924A' : 'rgba(201,146,74,0.2)'}`,
-                  borderRadius: '2px',
-                }}
-              >
-                {cond}
-              </button>
-            ))}
-
-            <div
-              className="w-px h-6 hidden md:block"
-              style={{ background: 'rgba(201,146,74,0.2)' }}
-            />
-
-            {/* Route */}
-            {ROUTES.map((r) => (
-              <button
-                key={r}
-                onClick={() => setRoute(r === route ? '' : r)}
-                className="font-ui text-xs tracking-[0.1em] uppercase px-4 py-2 transition-colors"
-                style={{
-                  background: route === r ? '#1A1A1A' : 'transparent',
-                  color: route === r ? '#C9924A' : '#555555',
-                  border: `1px solid ${route === r ? '#C9924A' : 'rgba(201,146,74,0.2)'}`,
-                  borderRadius: '2px',
-                }}
-              >
-                {r}
-              </button>
-            ))}
-
-            {/* Sort */}
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              className="ml-auto font-ui text-xs text-muted bg-surface border px-3 py-2 focus:outline-none focus:border-gold transition-colors"
-              style={{
-                border: '1px solid rgba(201,146,74,0.2)',
-                borderRadius: '2px',
-              }}
-            >
-              {SORT_OPTIONS.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Results count */}
-          <div className="flex items-center justify-between mb-6">
-            <p className="font-ui text-xs text-muted tracking-wider">
-              {filtered.length} item{filtered.length !== 1 ? 's' : ''} available
-              {hasFilters && ' (filtered)'}
+      <section className="bg-bg pt-20 pb-16">
+        <div className="max-w-site mx-auto px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+          <div>
+            <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-4">
+              Current Inventory
             </p>
-            {hasFilters && (
-              <button
-                onClick={() => { setCategory(''); setCondition(''); setRoute('') }}
-                className="font-ui text-xs text-gold hover:underline"
-              >
-                Clear filters
-              </button>
-            )}
-          </div>
-
-          {/* Grid */}
-          {filtered.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((listing) => (
-                <ListingCard key={listing.id} listing={listing} />
-              ))}
-            </div>
-          ) : (
-            <div
-              className="text-center py-20 px-6"
-              style={{
-                border: '1px solid rgba(201,146,74,0.15)',
-                borderRadius: '4px',
-                background: '#111111',
-              }}
-            >
-              <p className="font-display text-2xl text-warm mb-3">Nothing here right now.</p>
-              <p className="font-ui text-sm text-muted mb-6">New items drop frequently.</p>
+            <h1 className="font-display text-5xl md:text-6xl text-warm font-semibold leading-tight mb-5">
+              Live Items.<br />One Official Source.
+            </h1>
+            <div className="w-9 h-0.5 bg-gold mb-6" />
+            <p className="font-ui text-body text-lg leading-relaxed max-w-xl mb-8">
+              Instagram is SGD&apos;s live inventory. Each active caption carries the
+              current price, reference ID, location, condition, and availability status.
+            </p>
+            <div className="flex flex-wrap gap-4">
               <a
                 href="https://instagram.com/sufficientgracedeclutter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-ui text-xs text-gold hover:underline"
+                className="inline-flex items-center justify-center bg-gold text-bg font-ui text-xs font-semibold tracking-[0.15em] uppercase px-8 py-4 hover:bg-gold-light transition-colors"
+                style={{ borderRadius: '2px' }}
               >
-                Follow @sufficientgracedeclutter for drops →
+                Browse Live Inventory
+              </a>
+              <a
+                href={buildWhatsAppLink('Hi SGD, I want to confirm an item from your Instagram page.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center font-ui text-xs font-semibold tracking-[0.15em] uppercase px-8 py-4 hover:text-gold transition-colors"
+                style={{ border: '1px solid #C9924A', color: '#C9924A', borderRadius: '2px' }}
+              >
+                Ask on WhatsApp
               </a>
             </div>
-          )}
+          </div>
+
+          <div
+            className="relative p-8 md:p-10"
+            style={{
+              background: '#1A1A1A',
+              border: '1px solid rgba(201,146,74,0.35)',
+              borderRadius: '4px',
+            }}
+          >
+            <span
+              aria-hidden="true"
+              className="absolute -top-px -right-px w-16 h-16"
+              style={{ borderTop: '2px solid #C9924A', borderRight: '2px solid #C9924A' }}
+            />
+            <p className="font-ui text-[10px] tracking-[0.2em] uppercase text-muted mb-3">
+              Official channel
+            </p>
+            <p className="font-display text-3xl md:text-4xl text-warm font-semibold mb-8">
+              <span className="block sm:inline">@sufficientgrace</span><span className="block sm:inline">declutter</span>
+            </p>
+            <div className="space-y-4 font-ui text-sm text-body">
+              {['ITEM', 'FIXED PRICE', 'REFERENCE ID', 'LOCATION', 'CONDITION', 'STATUS'].map((field) => (
+                <div key={field} className="flex items-center justify-between gap-4 pb-3 border-b border-surface3">
+                  <span className="text-muted">Caption field</span>
+                  <span className="text-gold tracking-[0.12em] text-xs">{field}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="bg-surface py-20"
+        style={{ borderTop: '1.5px solid #C9924A' }}
+      >
+        <div className="max-w-site mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-4">
+              How to Inquire
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl text-warm font-semibold">
+              Reference First. Confirmation Next.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {STEPS.map((step) => (
+              <article
+                key={step.number}
+                className="p-8"
+                style={{
+                  background: '#111111',
+                  border: '1px solid rgba(201,146,74,0.2)',
+                  borderRadius: '4px',
+                }}
+              >
+                <p className="font-ui text-4xl font-bold text-gold opacity-30 mb-8">
+                  {step.number}
+                </p>
+                <h3 className="font-display text-2xl text-warm font-semibold mb-3">
+                  {step.title}
+                </h3>
+                <p className="font-ui text-sm text-muted leading-relaxed">{step.body}</p>
+              </article>
+            ))}
+          </div>
+
+          <p className="font-ui text-xs text-muted text-center mt-10">
+            Availability is confirmed at the time of inquiry and is never assumed from an old post or screenshot.
+          </p>
         </div>
       </section>
     </>

@@ -32,7 +32,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <Link
@@ -50,7 +50,7 @@ export default function Navbar() {
           href={buildWhatsAppLink()}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-block bg-gold text-bg font-ui text-xs font-semibold tracking-[0.15em] uppercase px-5 py-2.5 hover:bg-gold-light transition-colors"
+          className="hidden lg:inline-block bg-gold text-bg font-ui text-xs font-semibold tracking-[0.15em] uppercase px-5 py-2.5 hover:bg-gold-light transition-colors"
           style={{ borderRadius: '2px' }}
         >
           WhatsApp Us
@@ -58,9 +58,12 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
+          type="button"
           onClick={() => setOpen(!open)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Toggle menu"
+          className="lg:hidden flex flex-col gap-1.5 p-2"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           <span className={`block w-6 h-0.5 bg-gold transition-all ${open ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`block w-6 h-0.5 bg-gold transition-all ${open ? 'opacity-0' : ''}`} />
@@ -70,7 +73,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-surface border-t border-surface3 px-6 py-6 flex flex-col gap-4">
+        <div id="mobile-navigation" className="lg:hidden bg-surface border-t border-surface3 px-6 py-6 flex flex-col gap-4">
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}

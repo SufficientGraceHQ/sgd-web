@@ -26,8 +26,8 @@ const config: Config = {
       fontFamily: {
         display: ['Cormorant Garamond', 'serif'],
         ui: ['Montserrat', 'sans-serif'],
-        hand: ['Caveat', 'cursive'],
-        mono: ['Space Mono', 'monospace'],
+        hand: ['Cormorant Garamond', 'serif'],
+        mono: ['Montserrat', 'sans-serif'],
       },
       maxWidth: {
         mobile: '480px',

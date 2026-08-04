@@ -4,7 +4,7 @@ import { buildWhatsAppLink } from '@/lib/sgd-listings'
 export const metadata: Metadata = {
   title: 'Contact SGD',
   description:
-    'Reach Sufficient Grace Declutter via WhatsApp or Instagram DM. Our AI (Esther) handles first response 24/7.',
+    'Reach Sufficient Grace Declutter through WhatsApp or Instagram DM.',
 }
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
           </h1>
           <div className="w-9 h-0.5 bg-gold mx-auto mb-6" />
           <p className="font-ui text-body text-lg max-w-md mx-auto leading-relaxed">
-            Our AI (Esther) handles first response 24/7. Human handover for complex inquiries.
+            Message us on WhatsApp or Instagram and our team will help with your inquiry.
           </p>
         </div>
       </section>
@@ -52,7 +52,7 @@ export default function ContactPage() {
             </div>
             <h3 className="font-display text-2xl text-warm font-semibold mb-2">WhatsApp</h3>
             <p className="font-ui text-sm text-muted mb-6 leading-relaxed">
-              Fastest response. Send us a message or screenshot of the item you want.
+              Direct channel. Send us a message or screenshot of the item you want.
             </p>
             <span
               className="inline-block font-ui text-xs font-semibold tracking-[0.15em] uppercase px-5 py-2.5 group-hover:bg-gold-light transition-colors"
@@ -104,9 +104,9 @@ export default function ContactPage() {
               borderRadius: '4px',
             }}
           >
-            <p className="font-hand text-lg text-gold mb-1">Esther is always on.</p>
+            <p className="font-hand text-lg text-gold mb-1">We&apos;re ready to help.</p>
             <p className="font-ui text-xs text-muted">
-              Our AI handles first response 24/7. Complex inquiries are escalated to the team.
+              Send the item reference or a screenshot so the team can confirm the current details.
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function Footer() {
           <p className="font-display text-2xl text-gold font-semibold tracking-widest mb-1">SGD</p>
           <p className="font-ui text-xs text-muted tracking-widest uppercase mb-4">Sufficient Grace Declutter</p>
           <p className="font-ui text-sm text-body leading-relaxed mb-4">
-            Lagos-based structured secondhand marketplace. Verified furniture, appliances & electronics.
+            Lagos-based structured marketplace for clean secondhand furniture, appliances, and electronics.
           </p>
           <p className="font-hand text-lg text-gold">Structure First. Scale Second.</p>
         </div>
@@ -49,7 +49,7 @@ export default function Footer() {
             {['Furniture', 'Appliances', 'Electronics'].map((cat) => (
               <li key={cat}>
                 <Link
-                  href={`/listings?category=${cat}`}
+                  href="/listings"
                   className="font-ui text-sm text-muted hover:text-gold transition-colors"
                 >
                   {cat}

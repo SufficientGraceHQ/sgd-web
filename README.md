@@ -1,24 +1,25 @@
 # Sufficient Grace Declutter Web
 
-Customer website and internal CRM interface for **Sufficient Grace Declutter (SGD)**.
+Production public website for **Sufficient Grace Declutter (SGD)**.
 
 > **Structure First. Scale Second.**
 
 ## Scope
 
-- Public SGD marketing pages
-- Listings and item-detail interfaces
-- Buyer and seller information flows
-- CRM contacts, tasks, notes and pipeline interfaces
-- Controlled agent-draft interface
-- Supabase-backed application data
+- Public SGD marketing and information pages
+- Buyer and seller process guidance
+- Live-inventory handoff to `@sufficientgracedeclutter`
+- WhatsApp inquiry links to the authorized SGD business number
 
-## Important boundaries
+## Production boundaries
 
-- Live Instagram captions remain authoritative for item availability and fixed price.
+- Instagram captions are authoritative for item availability, fixed price, reference ID, location, and condition.
+- The website does not publish mock inventory or independently confirm availability.
 - Payment confirmation requires an authorized human approval.
-- Production credentials belong in protected deployment configuration and must never be committed.
-- Webhook security and durable inbound message ingestion live in the separate private `sgd-gateway` repository.
+- CRM, AI-agent, database, and webhook endpoints are intentionally excluded from this public deployment.
+- Secure inbound webhook ingestion lives in the private `SufficientGraceHQ/sgd-gateway` repository.
+- SufficientOS application services belong in the private `SufficientGraceHQ/sufficientos` repository.
+- Production credentials must never be committed to this repository.
 
 ## Development
 
@@ -34,13 +35,14 @@ Open `http://localhost:3000`.
 ```bash
 npm run lint
 npm run build
+npm audit --audit-level=high
 ```
+
+## Deployment
+
+The application is a standard Next.js project. Netlify automatically provisions its current Next.js adapter when the repository is imported. No custom publish directory or legacy Vite configuration is required.
 
 ## Related repositories
 
-- `SufficientGraceHQ/sufficientos` — architecture and governance
+- `SufficientGraceHQ/sufficientos` — governed SufficientOS application and architecture
 - `SufficientGraceHQ/sgd-gateway` — secure inbound webhook gateway
-
-## Status
-
-This repository was preserved from the existing SGD website history. Production deployment connections must be verified before the old personal repository is archived.

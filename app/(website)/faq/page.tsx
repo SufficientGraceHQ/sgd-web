@@ -13,11 +13,11 @@ const FAQS = [
     items: [
       {
         q: 'Why do I pay SGD and not the seller directly?',
-        a: 'Payment to SGD creates a layer of accountability. The seller only gets paid once the transaction closes. This protects you from ghosting, fake listings, and bait-and-switch tactics.',
+        a: 'Payment to SGD keeps payment and seller-detail release inside one accountable transaction path. Seller settlement follows the authorized SGD process.',
       },
       {
         q: "What if the item isn't as described?",
-        a: 'We only list clean or near-new items. If we\'ve confirmed an item, it meets our standard. For Point & Kill purchases, our inspection is the guarantee.',
+        a: 'We only list clean or near-new items. Point & Kill adds an inspection step so the item condition can be checked before delivery.',
       },
       {
         q: 'Can I negotiate the price?',
@@ -33,7 +33,7 @@ const FAQS = [
       },
       {
         q: 'How quickly can I receive an item?',
-        a: 'Depends on the item and route. Point & Kill usually moves within 24–48 hours of payment. Self Inspection is on your timeline after we release seller details.',
+        a: 'Timing depends on the item, location, and selected route. SGD confirms the next handoff after payment; Self Inspection scheduling is coordinated by the buyer after seller details are released.',
       },
     ],
   },
@@ -54,7 +54,7 @@ const FAQS = [
       },
       {
         q: 'Do I need to be present for the inspection?',
-        a: "For Point & Kill purchases, yes — we come to you. For Self Inspection, the buyer arranges directly after we share your details.",
+        a: 'No. Under Point & Kill, SGD handles the source visit. Under Self Inspection, the buyer arranges the visit after seller details are released.',
       },
     ],
   },
@@ -67,11 +67,11 @@ const FAQS = [
       },
       {
         q: 'How do I contact SGD?',
-        a: 'WhatsApp or Instagram DM @sufficientgracedeclutter. Our AI (Esther) handles first response 24/7. Human handover for complex inquiries.',
+        a: 'Message us on WhatsApp or Instagram DM @sufficientgracedeclutter with the item reference or a screenshot.',
       },
       {
         q: 'How long has SGD been operating?',
-        a: 'Six years. Three years of ground-level market experience, three years of structured operations on top of it.',
+        a: 'More than four years, with over 8,000 successful transactions across WhatsApp and Instagram.',
       },
     ],
   },

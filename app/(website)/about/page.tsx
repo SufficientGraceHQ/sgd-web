@@ -4,13 +4,13 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About SGD',
   description:
-    'Six years. One standard. The story of Sufficient Grace Declutter — Lagos\' structured secondhand marketplace.',
+    'More than four years of structured secondhand transactions through Sufficient Grace Declutter in Lagos.',
 }
 
 const VALUES = [
   {
-    title: 'Verification',
-    body: 'Every item is confirmed before listing. Every buyer pays before getting seller details. Nothing ships without our nod.',
+    title: 'Process Control',
+    body: 'Item details are checked with the source. Buyers pay SGD before seller details are released. Fulfilment follows the approved SGD process.',
   },
   {
     title: 'Structure',
@@ -18,7 +18,7 @@ const VALUES = [
   },
   {
     title: 'Transparency',
-    body: 'Fixed prices. Clear routes. No hidden steps. What you see is what happens. Always.',
+    body: 'Fixed prices, clear buying routes, and a defined handoff at each stage of the transaction.',
   },
 ]
 
@@ -30,7 +30,7 @@ export default function AboutPage() {
         <div className="max-w-site mx-auto px-6">
           <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-4">Our Story</p>
           <h1 className="font-display text-5xl md:text-6xl text-warm font-semibold mb-4">
-            Six Years. One Standard.
+            Structure Built Through Experience.
           </h1>
           <div className="w-9 h-0.5 bg-gold" />
         </div>
@@ -47,13 +47,13 @@ export default function AboutPage() {
               SGD wasn&apos;t built in a boardroom. It was built in the street — learning how trust is earned one deal at a time.
             </p>
             <p>
-              Three years of ground-level orientation. Three years of building structure on top of it. Over 42,000 buyers served. Over 8,500 items moved. One rule that never changed: structure first.
+              More than four years in the market and over 8,000 successful transactions across WhatsApp and Instagram taught us one rule: structure first.
             </p>
             <p>
-              The Lagos secondhand market was full of potential and full of chaos. Ghost sellers. Bait-and-switch listings. Buyers scammed. Sellers stranded. There was no platform anyone could trust end-to-end.
+              Lagos&apos;s secondhand market held opportunity but lacked consistent structure. Buyers and sellers had to manage unclear listings, fragmented communication, and uncertain handoffs.
             </p>
             <p>
-              SGD built that platform. Not by being the biggest, the cheapest, or the loudest — but by being the most consistent. Every deal, every time, same process.
+              SGD built that platform. Not by being the biggest, the cheapest, or the loudest — but by applying a consistent process to each transaction.
             </p>
           </div>
 
@@ -63,16 +63,16 @@ export default function AboutPage() {
             style={{ borderLeft: '2px solid #C9924A' }}
           >
             <p className="font-display text-2xl md:text-3xl text-warm font-semibold leading-snug italic">
-              &ldquo;We didn&apos;t become trusted because we were big. We became big because we were structured.&rdquo;
+              &ldquo;Structure First. Scale Second.&rdquo;
             </p>
           </blockquote>
 
           <div className="space-y-6 font-ui text-body text-base leading-relaxed">
             <p>
-              Today, SGD operates one of Lagos&apos; most trusted secondhand channels. Buyers come back. Sellers refer. The process doesn&apos;t change.
+              SGD has completed more than 8,000 successful transactions across WhatsApp and Instagram over more than four years.
             </p>
             <p>
-              We move furniture. Appliances. Electronics. All verified. All fixed-price. All structured.
+              We move furniture, appliances, and electronics through fixed pricing and clearly defined buying routes.
             </p>
           </div>
         </div>
@@ -82,10 +82,10 @@ export default function AboutPage() {
       <section className="bg-bg py-16">
         <div className="max-w-site mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { stat: '42,000+', label: 'Buyers Served' },
-            { stat: '8,500+', label: 'Items Delivered' },
-            { stat: '6 Years', label: 'In Business' },
-            { stat: '2,000%+', label: 'Peak ROAS' },
+            { stat: '8,000+', label: 'Successful Transactions' },
+            { stat: '4+ Years', label: 'In the Market' },
+            { stat: 'Fixed', label: 'Transparent Prices' },
+            { stat: 'Lagos', label: 'Based & Operational' },
           ].map((s) => (
             <div key={s.label} className="text-center">
               <p className="font-mono text-3xl md:text-4xl text-gold font-bold mb-2">{s.stat}</p>

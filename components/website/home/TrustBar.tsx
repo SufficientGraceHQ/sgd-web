@@ -1,7 +1,7 @@
 const STATS = [
-  { stat: '42,000+', label: 'Buyers Served' },
-  { stat: '8,500+', label: 'Items Delivered' },
-  { stat: '6 Years', label: 'In Business' },
+  { stat: '8,000+', label: 'Successful Transactions' },
+  { stat: '4+ Years', label: 'Serving Customers' },
+  { stat: 'Fixed', label: 'Transparent Prices' },
   { stat: 'Lagos', label: 'Based & Operational' },
 ]
 
