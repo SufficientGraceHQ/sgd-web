@@ -2,26 +2,18 @@ import Link from 'next/link'
 
 export default function SellCTABanner() {
   return (
-    <section
-      className="bg-surface2 py-16"
-      style={{ borderTop: '1.5px solid #C9924A' }}
-    >
-      <div className="max-w-site mx-auto px-6 text-center">
-        <h2 className="font-display text-4xl md:text-5xl text-warm font-semibold mb-4">
-          Have an Item to Sell?
-        </h2>
-        <div className="w-9 h-0.5 bg-gold mx-auto mb-6" />
-        <p className="font-ui text-body text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-          We list, market, and move it for you. Structured. No stress.
-        </p>
-        <Link
-          href="/sell-with-us"
-          className="inline-block bg-gold text-bg font-ui text-sm font-semibold tracking-[0.15em] uppercase px-10 py-4 hover:bg-gold-light transition-colors"
-          style={{ borderRadius: '2px' }}
-        >
-          List Your Item With SGD
-        </Link>
+    <section className="sell-statement" aria-labelledby="sell-heading">
+      <div className="site-shell sell-statement__inner">
+        <div>
+          <p className="eyebrow"><span /> Ready to declutter?</p>
+          <h2 id="sell-heading">Let the right item<br />find its <em>next home.</em></h2>
+        </div>
+        <div className="sell-statement__action">
+          <p>Share the item details with SGD. Our team reviews the submission and follows up on WhatsApp.</p>
+          <Link className="button button--dark" href="/sell-with-us">Sell with SGD <span aria-hidden="true">→</span></Link>
+        </div>
       </div>
+      <p className="sell-statement__signature">Structure First. Scale Second.</p>
     </section>
   )
 }

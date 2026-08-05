@@ -1,104 +1,53 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import ReferenceLookup from './ReferenceLookup'
 
 export default function Hero() {
   return (
-    <section
-      className="relative bg-bg overflow-hidden"
-      style={{ minHeight: 'min(90vh, 720px)' }}
-    >
-      {/* Gold L-bracket top-left */}
-      <span
-        className="absolute top-8 left-8 w-10 h-10 pointer-events-none"
-        style={{
-          borderTop: '2px solid #C9924A',
-          borderLeft: '2px solid #C9924A',
-        }}
-      />
+    <section className="marketplace-hero">
+      <div data-hero-editorial className="marketplace-hero__media" aria-hidden="true">
+        <Image
+          src="/images/sgd-hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="marketplace-hero__image"
+        />
+      </div>
+      <div className="marketplace-hero__veil" aria-hidden="true" />
 
-      {/* Gold L-bracket bottom-right */}
-      <span
-        className="absolute bottom-8 right-8 w-10 h-10 pointer-events-none"
-        style={{
-          borderBottom: '2px solid #C9924A',
-          borderRight: '2px solid #C9924A',
-        }}
-      />
-
-      <div className="max-w-site mx-auto px-6 h-full flex items-center">
-        <div className="grid md:grid-cols-2 gap-12 items-center py-20 w-full">
-          {/* Text panel */}
-          <div>
-            <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-6">
-              Lagos, Nigeria — 4+ Years
-            </p>
-
-            <h1
-              className="font-display font-semibold text-warm leading-[1.1] mb-6"
-              style={{ fontSize: 'clamp(48px, 7vw, 88px)' }}
-            >
-              <span className="text-gold">Structured</span>{' '}
-              Secondhand.{' '}
-              <br className="hidden md:block" />
-              Clear Buying Routes.
-            </h1>
-
-            {/* Gold rule line */}
-            <div
-              className="mb-8"
-              style={{ width: '36px', height: '2px', backgroundColor: '#C9924A' }}
-            />
-
-            <p className="font-ui text-body text-lg leading-relaxed mb-10 max-w-md">
-              Furniture. Appliances. Electronics. Fixed prices.
-              Defined payment and fulfilment steps.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/listings"
-                className="inline-block bg-gold text-bg font-ui text-sm font-semibold tracking-[0.15em] uppercase px-8 py-4 hover:bg-gold-light transition-colors"
-                style={{ borderRadius: '2px' }}
-              >
-                Browse Live Inventory
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="inline-block font-ui text-sm font-semibold tracking-[0.15em] uppercase px-8 py-4 hover:text-gold transition-colors"
-                style={{
-                  borderRadius: '2px',
-                  border: '1px solid #C9924A',
-                  color: '#C9924A',
-                }}
-              >
-                How It Works
-              </Link>
-            </div>
-          </div>
-
-          {/* Image panel */}
-          <div
-            className="relative hidden md:flex items-center justify-center"
-            style={{ minHeight: '400px' }}
-          >
-            <div
-              className="w-full h-full absolute inset-0"
-              style={{
-                background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
-                border: '1px solid rgba(201,146,74,0.2)',
-                borderRadius: '4px',
-              }}
-            />
-            <div className="relative z-10 text-center p-12">
-              <p className="font-display text-5xl text-gold font-semibold mb-3">8,000+</p>
-              <p className="font-ui text-xs tracking-[0.2em] uppercase text-muted mb-8">Successful Transactions</p>
-              <div className="w-px h-12 bg-gold mx-auto opacity-30 mb-8" />
-              <p className="font-display text-5xl text-gold font-semibold mb-3">4+ Years</p>
-              <p className="font-ui text-xs tracking-[0.2em] uppercase text-muted mb-8">Serving Lagos</p>
-              <div className="w-px h-12 bg-gold mx-auto opacity-30 mb-8" />
-              <p className="font-hand text-2xl text-warm">Structure First. Scale Second.</p>
-            </div>
+      <div className="site-shell marketplace-hero__inner">
+        <div className="marketplace-hero__copy">
+          <p className="eyebrow"><span /> Lagos&apos;s structured secondhand marketplace</p>
+          <h1>
+            Good pieces.<br />
+            <em>A second life.</em><br />
+            Clear process.
+          </h1>
+          <p className="marketplace-hero__lede">
+            Clean and near-new furniture, appliances, and electronics—shared at fixed prices through a defined buying process.
+          </p>
+          <div className="marketplace-hero__actions">
+            <a className="button" href="https://instagram.com/sufficientgracedeclutter" target="_blank" rel="noopener noreferrer">
+              See live drops <span aria-hidden="true">↗</span>
+            </a>
+            <Link className="text-link" href="/how-it-works">
+              Understand the process <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
+
+        <div className="marketplace-hero__proof" aria-label="Marketplace track record">
+          <div><strong>8,000+</strong><span>successful transactions</span></div>
+          <div><strong>4+</strong><span>years in operation</span></div>
+        </div>
+
+        <p className="marketplace-hero__caption">Editorial scene · live items are posted on Instagram</p>
+      </div>
+
+      <div className="site-shell marketplace-hero__search-wrap">
+        <ReferenceLookup />
       </div>
     </section>
   )

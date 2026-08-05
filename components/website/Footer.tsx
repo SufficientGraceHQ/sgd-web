@@ -1,99 +1,56 @@
 import Link from 'next/link'
 import { buildWhatsAppLink } from '@/lib/sgd-listings'
 
+const NAVIGATION = [
+  { label: 'Browse inventory', href: '/listings' },
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Sell an item', href: '/sell-with-us' },
+  { label: 'Our story', href: '/about' },
+  { label: 'Buyer FAQs', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+]
+
 export default function Footer() {
   return (
-    <footer
-      className="bg-bg"
-      style={{ borderTop: '1.5px solid #C9924A' }}
-    >
-      <div className="max-w-site mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand */}
-        <div>
-          <p className="font-display text-2xl text-gold font-semibold tracking-widest mb-1">SGD</p>
-          <p className="font-ui text-xs text-muted tracking-widest uppercase mb-4">Sufficient Grace Declutter</p>
-          <p className="font-ui text-sm text-body leading-relaxed mb-4">
-            Lagos-based structured marketplace for clean secondhand furniture, appliances, and electronics.
-          </p>
-          <p className="font-hand text-lg text-gold">Structure First. Scale Second.</p>
+    <footer className="premium-footer">
+      <div className="site-shell premium-footer__top">
+        <div className="premium-footer__brand">
+          <Link href="/" className="brand-lockup" aria-label="Sufficient Grace Declutter home">
+            <span className="brand-monogram">SGD</span>
+            <span className="brand-name">Sufficient Grace<br />Declutter</span>
+          </Link>
+          <p>A Lagos marketplace for clean and near-new furniture, appliances, and electronics—moved through a structured process.</p>
         </div>
 
-        {/* Navigate */}
-        <div>
-          <p className="font-ui text-xs tracking-[0.2em] uppercase text-gold mb-5">Navigate</p>
-          <ul className="space-y-3">
-            {[
-              { label: 'Home', href: '/' },
-              { label: 'Listings', href: '/listings' },
-              { label: 'How It Works', href: '/how-it-works' },
-              { label: 'Sell With Us', href: '/sell-with-us' },
-              { label: 'About', href: '/about' },
-              { label: 'FAQ', href: '/faq' },
-            ].map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="font-ui text-sm text-muted hover:text-gold transition-colors"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
+        <div className="premium-footer__nav">
+          <p className="footer-label">Explore</p>
+          <ul>
+            {NAVIGATION.map((link) => <li key={link.href}><Link href={link.href}>{link.label}</Link></li>)}
           </ul>
         </div>
 
-        {/* Categories */}
-        <div>
-          <p className="font-ui text-xs tracking-[0.2em] uppercase text-gold mb-5">Categories</p>
-          <ul className="space-y-3">
-            {['Furniture', 'Appliances', 'Electronics'].map((cat) => (
-              <li key={cat}>
-                <Link
-                  href="/listings"
-                  className="font-ui text-sm text-muted hover:text-gold transition-colors"
-                >
-                  {cat}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Connect */}
-        <div>
-          <p className="font-ui text-xs tracking-[0.2em] uppercase text-gold mb-5">Connect</p>
-          <ul className="space-y-3">
-            <li>
-              <a
-                href={buildWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-ui text-sm text-muted hover:text-gold transition-colors"
-              >
-                WhatsApp
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://instagram.com/sufficientgracedeclutter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-ui text-sm text-muted hover:text-gold transition-colors"
-              >
-                @sufficientgracedeclutter
-              </a>
-            </li>
-          </ul>
+        <div className="premium-footer__contact">
+          <p className="footer-label">Official channels</p>
+          <a href="https://instagram.com/sufficientgracedeclutter" target="_blank" rel="noopener noreferrer">
+            Instagram <span aria-hidden="true">↗</span>
+          </a>
+          <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+            WhatsApp <span aria-hidden="true">↗</span>
+          </a>
+          <p>Current inventory is verified through official SGD posts and direct human confirmation.</p>
         </div>
       </div>
 
-      <div
-        className="border-t py-6 px-6"
-        style={{ borderColor: 'rgba(201,146,74,0.15)' }}
-      >
-        <p className="font-ui text-xs text-ghost-text text-center">
-          © Sufficient Grace Declutter. All rights reserved.
-        </p>
+      <div className="site-shell premium-footer__statement">
+        <p>Structure First.<br /><em>Scale Second.</em></p>
+      </div>
+
+      <div className="premium-footer__bottom">
+        <div className="site-shell">
+          <span>© Sufficient Grace Declutter</span>
+          <span>Lagos, Nigeria</span>
+          <span>Fixed-price secondhand marketplace</span>
+        </div>
       </div>
     </footer>
   )

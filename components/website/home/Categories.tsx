@@ -1,86 +1,69 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const CATEGORIES = [
   {
     name: 'Furniture',
-    description: 'Sofas, beds, wardrobes, dining sets',
-    href: '/listings',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M3 10V8a1 1 0 011-1h16a1 1 0 011 1v2M3 10v8a1 1 0 001 1h16a1 1 0 001-1v-8M7 14h10M5 10v4M19 10v4" />
-        <rect x="5" y="17" width="2" height="2" rx="0.5" />
-        <rect x="17" y="17" width="2" height="2" rx="0.5" />
-      </svg>
-    ),
+    description: 'Sofas, beds, wardrobes, dining sets, and statement pieces.',
+    image: '/images/category-furniture.webp',
+    className: 'category-card--feature',
   },
   {
     name: 'Appliances',
-    description: 'Fridges, washing machines, ACs, TVs',
-    href: '/listings',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <rect x="5" y="3" width="14" height="18" rx="1" />
-        <path strokeLinecap="round" d="M8 7h1M8 10h1" />
-        <circle cx="12" cy="14" r="3" />
-      </svg>
-    ),
+    description: 'Fridges, washing machines, air conditioners, and home essentials.',
+    image: '/images/category-appliances.webp',
+    className: '',
   },
   {
     name: 'Electronics',
-    description: 'Laptops, phones, sound systems, gadgets',
-    href: '/listings',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <rect x="2" y="4" width="20" height="14" rx="1" />
-        <path strokeLinecap="round" d="M8 22h8M12 18v4" />
-      </svg>
-    ),
+    description: 'Televisions, laptops, sound systems, phones, and gadgets.',
+    image: '/images/category-electronics.webp',
+    className: '',
   },
 ]
 
 export default function Categories() {
   return (
-    <section className="bg-surface py-20">
-      <div className="max-w-site mx-auto px-6">
-        {/* Headline */}
-        <div className="text-center mb-14">
-          <p className="font-ui text-xs tracking-[0.3em] uppercase text-gold mb-3">What We Move</p>
-          <h2 className="font-display text-4xl md:text-5xl text-warm font-semibold">
-            What We Move
-          </h2>
-          <div className="w-9 h-0.5 bg-gold mx-auto mt-4" />
+    <section className="editorial-categories" aria-labelledby="category-heading">
+      <div className="site-shell">
+        <div className="section-heading section-heading--split">
+          <div>
+            <p className="eyebrow"><span /> Browse the marketplace</p>
+            <h2 id="category-heading">Made for the way<br /><em>Lagos homes move.</em></h2>
+          </div>
+          <p>
+            Find the category you need, then continue to our official Instagram feed for current items and reference IDs.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {CATEGORIES.map((cat) => (
+        <div className="editorial-categories__grid">
+          {CATEGORIES.map((category, index) => (
             <Link
-              key={cat.name}
-              href={cat.href}
-              className="group block p-8 transition-all"
-              style={{
-                background: '#1A1A1A',
-                border: '1px solid rgba(201,146,74,0.2)',
-                borderRadius: '4px',
-              }}
+              key={category.name}
+              href="/listings"
+              className={`editorial-category ${category.className}`}
             >
-              <div
-                className="text-gold mb-6 transition-transform group-hover:scale-110"
-                style={{ color: '#C9924A' }}
-              >
-                {cat.icon}
+              <div data-editorial-category-image className="editorial-category__media">
+                <Image
+                  src={category.image}
+                  alt={`Illustrative ${category.name.toLowerCase()} category scene`}
+                  fill
+                  loading="eager"
+                  sizes={index === 0 ? '(min-width: 900px) 58vw, 100vw' : '(min-width: 900px) 38vw, 100vw'}
+                />
               </div>
-              <h3 className="font-display text-2xl text-warm font-semibold mb-3">
-                {cat.name}
-              </h3>
-              <p className="font-ui text-sm text-muted leading-relaxed">
-                {cat.description}
-              </p>
-              <p className="font-ui text-xs text-gold mt-5 tracking-[0.1em] uppercase group-hover:translate-x-1 transition-transform inline-block">
-                Browse {cat.name} →
-              </p>
+              <div className="editorial-category__gradient" aria-hidden="true" />
+              <span className="editorial-category__index">0{index + 1}</span>
+              <div className="editorial-category__copy">
+                <p>Explore category</p>
+                <h3>{category.name}</h3>
+                <span>{category.description}</span>
+              </div>
+              <span className="editorial-category__arrow" aria-hidden="true">↗</span>
             </Link>
           ))}
         </div>
+        <p className="editorial-note">Category photography is illustrative. Current availability comes from official SGD posts.</p>
       </div>
     </section>
   )
